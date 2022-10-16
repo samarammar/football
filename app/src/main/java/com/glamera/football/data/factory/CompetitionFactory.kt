@@ -16,4 +16,5 @@ class CompetitionFactory @Inject constructor(
 //            else -> networkEntityData
 //        }
     }
+
 }

@@ -4,5 +4,5 @@ import com.glamera.football.domain.entity.CompetitionItem
 
 data class CompetitionsResponce (
 
-    val competitions: List<CompetitionItem>
+    val competitions: List<CompetitionItem>?
         )
