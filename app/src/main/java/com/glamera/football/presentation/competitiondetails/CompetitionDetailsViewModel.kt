@@ -27,8 +27,6 @@ constructor(
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<FootballDetailUiState>(
         FootballDetailUiState.Loading)
-    private val _uiStateTeam = MutableStateFlow<FootballDetailUiState>(
-        FootballDetailUiState.Loading)
     val uiState: StateFlow<FootballDetailUiState> = _uiState
 
 
@@ -42,7 +40,7 @@ constructor(
 
                 _uiState.value = FootballDetailUiState.
                 Loaded(CompetitionDetailsUiState(result.first().name,result.first().type,
-                    result.first().emblem,result.first().seasons))
+                    result.first().emblem,result.first().seasons,result.first().area))
             } catch (error: Exception) {
                 _uiState.value = FootballDetailUiState.Error(ExceptionParser.getMessage(error))
             }

@@ -10,7 +10,26 @@
         android:id="@+id/competitionFragment"
         android:name="com.glamera.football.presentation.competitions.CompetitionFragment"
         android:label="competition_fragment"
-        tools:layout="@layout/fragment_competitions" />
+        tools:layout="@layout/fragment_competitions" >
+                <action
+                    android:id="@+id/action_mainFragment_to_detailsFragment"
+                    app:destination="@id/competitionDetailsFragment"
+                    app:enterAnim="@anim/nav_default_pop_enter_anim"
+                    app:exitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <argument
+            android:name="code"
+            android:defaultValue="PL"
+            app:argType="string" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/competitionDetailsFragment"
+        android:name="com.glamera.football.presentation.competitiondetails.CompetitionDetailsFragment"
+        android:label="competition_setails_fragment"
+        tools:layout="@layout/fragment_details" />
 <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_searchFragment"-->
 <!--            app:destination="@id/Fragment"-->

@@ -1,16 +1,15 @@
 package com.glamera.football.presentation.competitions
 
-import android.util.Log
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
-import com.glamera.football.databinding.ActivityCompetitionsBinding
+import com.glamera.football.R
 import com.glamera.football.databinding.FragmentCompetitionsBinding
 import com.glamera.football.domain.entity.CompetitionItem
 import com.glamera.football.presentation.base.BaseFragment
@@ -27,10 +26,6 @@ import timber.log.Timber
 @AndroidEntryPoint
 class CompetitionFragment : BaseFragment<FragmentCompetitionsBinding>() {
 
-
-//    override val bindLayout: (LayoutInflater) -> ActivityCompetitionsBinding
-//        get() = ActivityCompetitionsBinding::inflate
-
     private lateinit var viewModel: CompetitionsViewModel
     private lateinit var adaptercompet: CompetitionsAdapter
     private fun initUi() {
@@ -43,7 +38,11 @@ class CompetitionFragment : BaseFragment<FragmentCompetitionsBinding>() {
     override fun constructViewBinding(): ViewBinding = FragmentCompetitionsBinding.inflate(layoutInflater)
 
     private fun onListItemClick(code:String) {
-        Toast.makeText(context, code, Toast.LENGTH_SHORT).show()
+        view?.let {
+            Navigation.findNavController(it).navigate(
+                R.id.action_mainFragment_to_detailsFragment)
+        };
+
     }
     override fun init(viewBinding: ViewBinding) {
         viewModel = ViewModelProvider(this).get(CompetitionsViewModel::class.java)
@@ -51,7 +50,8 @@ class CompetitionFragment : BaseFragment<FragmentCompetitionsBinding>() {
         adaptercompet = CompetitionsAdapter{ code -> onListItemClick(code) }
 
         initUi()
-        fetchCompetitions()    }
+        fetchCompetitions()
+    }
 
 
 
