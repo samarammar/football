@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.glamera.football.data.networking.CoroutineDispatcherProvider
 import com.glamera.football.domain.usecase.CompetitionDetailUsecase
 import com.glamera.football.domain.usecase.CompetitionUsecase
+import com.glamera.football.domain.usecase.TeamsUsecase
 import com.glamera.football.presentation.competitions.CompetitionUiState
 import com.glamera.football.presentation.competitions.CompetitionsViewModel
 import com.glamera.football.util.ExceptionParser
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class CompetitionDetailsViewModel @Inject
 constructor(
     private val competitionDetailUsecase: CompetitionDetailUsecase,
+    private val teamsUsecase: TeamsUsecase,
     private val coroutineDispatcherProvider: CoroutineDispatcherProvider
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<FootballDetailUiState>(

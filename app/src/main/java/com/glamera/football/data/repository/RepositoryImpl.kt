@@ -2,7 +2,9 @@ package com.glamera.football.data.repository
 
 import com.glamera.football.data.factory.CompetitionFactory
 import com.glamera.football.data.model.CompetitionDetailsResponce
+import com.glamera.football.data.model.TeamsResponce
 import com.glamera.football.domain.entity.CompetitionItem
+import com.glamera.football.domain.entity.TeamsItem
 import com.glamera.football.domain.repository.FootballRepository
 import com.glamera.football.util.Source
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,12 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getCompetitionDetails(comepetId: String): Flow<CompetitionDetailsResponce> {
         return flow{
             emit( competitionFactory.create(Source.NETWORK).getCompetitionDetails(comepetId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun getTeams(comepetId: String): Flow<List<TeamsItem>> {
+        return flow{
+            emit( competitionFactory.create(Source.NETWORK).getTeams(comepetId))
         }.flowOn(Dispatchers.IO)
     }
 
