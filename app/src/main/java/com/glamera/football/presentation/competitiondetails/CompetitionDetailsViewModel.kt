@@ -27,6 +27,8 @@ constructor(
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<FootballDetailUiState>(
         FootballDetailUiState.Loading)
+    private val _uiStateTeam = MutableStateFlow<FootballDetailUiState>(
+        FootballDetailUiState.Loading)
     val uiState: StateFlow<FootballDetailUiState> = _uiState
 
 
