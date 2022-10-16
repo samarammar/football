@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="competition_name">Competition name:</string>
+    <string name="competition_code">Competition Code</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+</resources>
